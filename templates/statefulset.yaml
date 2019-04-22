@@ -204,7 +204,9 @@ spec:
         image: {{ template "metrics.image" . }}
         imagePullPolicy: {{ .Values.metrics.image.pullPolicy | quote }}
         args:
+        {{- if .Values.metrics.args }}
 {{ toYaml .Values.metrics.args | indent 10 -}}
+        {{- end }}
           - "http://localhost:{{ .Values.monitoring.service.port }}"
         ports:
         - name: metrics
