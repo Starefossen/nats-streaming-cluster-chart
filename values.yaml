@@ -31,13 +31,13 @@ replicaCount: 3
 
 # Cluster ID (default: test-cluster)
 clusterID: "test-cluster"
-  
+
 # Connect to this external NATS Server URL
 natsSvc: "nats://nats:4222"
 
 # Max number of channels (0 for unlimited)
 maxChannels: 100
-  
+
 # Max number of subscriptions per channel (0 for unlimited)
 maxSubs: 1000
 
@@ -90,7 +90,7 @@ persistence:
 
     ##
     ## ADVANCED CONFIGURATION:  Change these with caution.
-    ## 
+    ##
     # File buffer size (in bytes)
     bufferSize: "2097152"
 
