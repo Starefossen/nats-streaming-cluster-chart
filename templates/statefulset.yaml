@@ -3,8 +3,8 @@ kind: StatefulSet
 metadata:
   name: {{ template "nats-streaming.fullname" . }}
   labels:
-    app: "{{ template "nats-streaming.name" . }}"
-    chart: "{{ template "nats-streaming.chart" . }}"
+    app: {{ template "nats-streaming.name" . }}
+    chart: {{ template "nats-streaming.chart" . }}
     release: {{ .Release.Name | quote }}
     heritage: {{ .Release.Service | quote }}
 spec:
@@ -22,8 +22,8 @@ spec:
   template:
     metadata:
       labels:
-        app: "{{ template "nats-streaming.name" . }}"
-        chart: "{{ template "nats-streaming.chart" . }}"
+        app: {{ template "nats-streaming.name" . }}
+        chart: {{ template "nats-streaming.chart" . }}
         release: {{ .Release.Name }}
         {{- if .Values.podLabels }}
 {{ toYaml .Values.podLabels | indent 8 }}
@@ -60,10 +60,10 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: "kubernetes.io/hostname"
+            - topologyKey: kubernetes.io/hostname
               labelSelector:
                 matchLabels:
-                  app: "{{ template "nats-streaming.name" . }}"
+                  app: {{ template "nats-streaming.name" . }}
                   release: {{ .Release.Name | quote }}
       {{- else if eq .Values.antiAffinity "soft" }}
       affinity:
@@ -74,7 +74,7 @@ spec:
               topologyKey: kubernetes.io/hostname
               labelSelector:
                 matchLabels:
-                  app: "{{ template "nats-streaming.name" . }}"
+                  app: {{ template "nats-streaming.name" . }}
                   release: {{ .Release.Name | quote }}
       {{- end }}
       containers:
