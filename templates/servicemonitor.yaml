@@ -1,0 +1,21 @@
+{{- if and .Values.metrics.enabled .Values.metrics.servicemonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "nats-streaming.fullname" . }}
+  labels:
+    app: {{ template "nats-streaming.name" . }}
+    chart: {{ template "nats-streaming.chart" . }}
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+    prometheus: {{ .Values.metrics.servicemonitor.prometheusInstance }}
+spec:
+  jobLabel: {{ template "nats-streaming.fullname" . }}
+  selector:
+    matchLabels:
+      app: {{ template "nats-streaming.name" . }}
+      release: {{ .Release.Name | quote }}
+  endpoints:
+  - port: monitoring
+    interval: 60s
+{{- end }}
