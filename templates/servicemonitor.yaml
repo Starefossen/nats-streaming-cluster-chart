@@ -16,6 +16,6 @@ spec:
       app: {{ template "nats-streaming.name" . }}
       release: {{ .Release.Name | quote }}
   endpoints:
-  - port: monitoring
+  - port: metrics
     interval: 60s
 {{- end }}
