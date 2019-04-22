@@ -270,10 +270,7 @@ metrics:
     prometheus.io/port: "7777"
   ## Metrics exporter flags
   args:
-    # TODO: Uncomment these args once synadia/prometheus-nats-exporter adds NATS Streaming support
     - -serverz
-    # - -storez
-    # - -clientz
     - -channelz
 
   # Prometheus Operator ServiceMonitor config
